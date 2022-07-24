@@ -1,0 +1,6 @@
+__pycache__
+.env
+Pipfile.lock
+movies.json
+movies.db.bckp
+movies_db_model.py
