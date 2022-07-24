@@ -363,7 +363,7 @@ if __name__ == "__main__":
     database = "./movies.db"  # path to db
     # # if not os.path.exists(database): # only creates a db if path does not exist
     # conn = db.create_connection(database)
-
+    # THIS WAS ADDED
 
     updater = Updater(token=TOKEN)
     dispatcher = updater.dispatcher
