@@ -355,7 +355,7 @@ if __name__ == "__main__":
     load_dotenv(dotenv_path=".")
 
     TOKEN = os.environ.get("TOKEN")
-    PORT = int(os.environ.get('PORT', 5000)) # FOR PRODUCTION 
+    PORT = int(os.environ.get('PORT', 443)) # FOR PRODUCTION 
     add_movie_img = r"images\add_movie_example.png"
     # allowed_usernames = ["lazy_jay", "Artemokrloov", "Jayminai", "Kaligraph_Jay"]#os.environ.get('allowed') 
     allowed_usernames = json.loads(os.environ['allowed_usernames']) 
@@ -364,10 +364,11 @@ if __name__ == "__main__":
     database = "./movies.db"  # path to db
     # # if not os.path.exists(database): # only creates a db if path does not exist
     # conn = db.create_connection(database)
-    # THIS WAS ADDED
+
 
     updater = Updater(token=TOKEN)
     dispatcher = updater.dispatcher
+
 
     search_convo_handler = ConversationHandler(
         entry_points=[CommandHandler("search", search_db)],
@@ -406,6 +407,7 @@ if __name__ == "__main__":
         fallbacks=[CommandHandler("cancel", cancel)],
         conversation_timeout=600,
     )
+
 
     cmd_text = """
         1. /start\n
