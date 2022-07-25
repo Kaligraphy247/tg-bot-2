@@ -1,2 +1,2 @@
-web: python main.py $PORT
+web: python main.py
 // switched from worker to web
