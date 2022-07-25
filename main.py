@@ -355,6 +355,7 @@ if __name__ == "__main__":
     load_dotenv(dotenv_path=".")
 
     TOKEN = os.environ.get("TOKEN")
+    PORT = int(os.environ.get('PORT', 5000)) # FOR PRODUCTION 
     add_movie_img = r"images\add_movie_example.png"
     # allowed_usernames = ["lazy_jay", "Artemokrloov", "Jayminai", "Kaligraph_Jay"]#os.environ.get('allowed') 
     allowed_usernames = json.loads(os.environ['allowed_usernames']) 
@@ -443,9 +444,12 @@ This command is for development purpose only. It will be removed in production.
    
 
     print("Running...")
-    # db.create_movie(conn, ("Movie_17", "t.me/lazy_jay"))
-    # print(db.show_movie_by_title(conn, ("Movie_17")))
-    # print(db.show_all_movies(conn))
 
-    updater.start_polling()  # bot is running
+    # For development only
+    # updater.start_polling()  # bot is running
+    # updater.idle()
+
+    updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
+    updater.bot.setWebhook("https://tg-bot-2-prod.herokuapp.com/" + TOKEN)
     updater.idle()
+                            
