@@ -355,9 +355,9 @@ if __name__ == "__main__":
     # load_dotenv(dotenv_path=".") diabled in prod
 
     TOKEN = os.environ.get("TOKEN")
-    PORT = int(os.environ.get('PORT', 5000)) # FOR PRODUCTION 
+    PORT = int(os.environ.get('PORT', '8443')) # FOR PRODUCTION 
     add_movie_img = r"images\add_movie_example.png"
-    HEROKU_APP_URL = "https://tg-bot-2-prod.herokuapp.com/" # TODO change later
+    HEROKU_APP_URL = "https://jte-tg-bot-2.herokuapp.com/" # TODO change later
     allowed_usernames = json.loads(os.environ['allowed_usernames']) 
     
 
@@ -451,8 +451,9 @@ This command is for development purpose only. It will be removed in production.
     # updater.start_polling()  # bot is running
     # updater.idle()
 
-    updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)#, webhook_url="https://tg-bot-2-prod.herokuapp.com/" + TOKEN)
-    updater.bot.setWebhook(f"{HEROKU_APP_URL}{TOKEN}")
+    updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN, webhook_url=f"{HEROKU_APP_URL}{TOKEN}")#, webhook_url="https://tg-bot-2-prod.herokuapp.com/" + TOKEN)
+    print(True)
+    # updater.bot.setWebhook(f"{HEROKU_APP_URL}{TOKEN}")
     #updater.bot.setWebhook(f"https://api.telegram.org/bot{TOKEN}/setWebhook?url={HEROKU_APP_URL}")  #https://tg-bot-2-prod.herokuapp.com/" + TOKEN)
     updater.idle()
                             
