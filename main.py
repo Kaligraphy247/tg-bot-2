@@ -90,14 +90,13 @@ def list_all(update: Update, context=CallbackContext):
     print(f"(user) ~{update.message.from_user.username}~ pressed the button list at {time_now()}")  # debug
 
 SEARCH_QUERY = range(1)
-
-
 def search_db(update: Update, context=CallbackContext):
     # context.bot.send_message(chat_id=update.effective_chat.id, text="Search DB")
     update.message.reply_text(
         "Search ATM's DB 🔎\n", reply_markup=ForceReply(selective=True)
     )
-    print(f"(user) ~{update.message.from_user.username}~ pressed the button search {time_now()}")  # debug    return SEARCH_QUERY
+    print(f"(user) ~{update.message.from_user.username}~ pressed the button search {time_now()}")  # debug    
+    return SEARCH_QUERY
     # print(user_data, text)
 
 
